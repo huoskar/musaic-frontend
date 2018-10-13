@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components';
 
 
 let defaultStyle = {
@@ -13,19 +14,14 @@ class WelcomeComment extends Component {
       width: "40%",
       display:'inline-block'}}
       >
-         <h1 style={{...defaultStyle,
-          'fontSize': '70px',
-          'marginTop' :'150px',
-          'marginLeft' :'150px'
-        }}>Musaic</h1>
 
-        <h2 style ={{
-           'marginLeft': '100px',
-           'marginTop' : '40px',
-           'color' : '#146E14'
+        <h2 style ={{...defaultStyle,
+           //'marginLeft': '100px',
+           //'marginTop' : '40px'
         }}>
-          Let's create awesome profile photo with your playlist on Spotify!
+          Let's create awesome profile photo with your favorite songs on Spotify! 
         </h2>
+      
 
       </div>
     )
