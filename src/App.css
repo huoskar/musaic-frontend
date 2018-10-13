@@ -30,3 +30,5 @@
     transform: rotate(360deg);
   }
 }
+html, body {
+  background-color: linear-gradient(45deg, #ffecd2, #fcb69f);}

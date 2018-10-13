@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import styled from 'styled-components';
+import LandingPage from './pages/LandingPage';
 
 import logo from './media/Musaic.png';
 import UploadPage from './pages/UploadPage';
@@ -25,6 +26,7 @@ class App extends Component {
       <BrowserRouter>
         <Wrapper>
           <Logo src={logo} alt='logo' />
+          <Route exact path='/' component={LandingPage} />
           <Route exact path='/upload' component={UploadPage} />
         </Wrapper>
       </BrowserRouter>
