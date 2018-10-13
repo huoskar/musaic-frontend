@@ -22,6 +22,7 @@ const Logo = styled.img`
 class App extends Component {
   render() {
     return (
+<<<<<<< HEAD
       <BrowserRouter>
         <Wrapper>
           <Logo src={logo} alt='logo' />
@@ -29,6 +30,12 @@ class App extends Component {
         </Wrapper>
       </BrowserRouter>
     );
+=======
+      <div>
+       </div>
+        
+        );
+>>>>>>> staging changes
   }
 }
 

@@ -8,7 +8,7 @@ class DisplayExp extends Component {
         display:'inline-block',
         marginLeft:'150px'}}>
         <h2>Gallery</h2>
-      <img src= 'images/example1.jpg' style={{width: '60px'}}/>
+      <img src= 'example1.jpg' style={{width: '60px'}}/>
       
       </div>
     )
