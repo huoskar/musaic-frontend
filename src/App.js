@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
-import TestText from './components/TestText';
+import styled from 'styled-components';
+
+import logo from './media/Musaic.png';
+import UploadPage from './pages/UploadPage';
+
+const Wrapper = styled.div`
+  width: 100%;
+  background: linear-gradient(45deg, #ffecd2, #fcb69f);
+  position: fixed;
+  height: 100%;
+`;
+
+const Logo = styled.img`
+  display: block;
+  width: 250px;
+  margin: 2rem auto 6rem;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <TestText />
-        </header>
-      </div>
+      <BrowserRouter>
+        <Wrapper>
+          <Logo src={logo} alt='logo' />
+          <Route exact path='/upload' component={UploadPage} />
+        </Wrapper>
+      </BrowserRouter>
     );
   }
 }
