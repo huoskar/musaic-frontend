@@ -4,19 +4,20 @@ import './App.css';
 import styled from 'styled-components';
 
 import logo from './media/Musaic.png';
+import DownloadPage from './pages/DownloadPage';
 import UploadPage from './pages/UploadPage';
 
 const Wrapper = styled.div`
-  width: 100%;
   background: linear-gradient(45deg, #ffecd2, #fcb69f);
-  position: fixed;
-  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  min-height: 100vh;
 `;
 
 const Logo = styled.img`
   display: block;
   width: 250px;
-  margin: 2rem auto 6rem;
+  margin: 2rem auto 4rem;
 `;
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
         <Wrapper>
           <Logo src={logo} alt='logo' />
           <Route exact path='/upload' component={UploadPage} />
+          <Route exact path='/download' component={DownloadPage} />
         </Wrapper>
       </BrowserRouter>
     );

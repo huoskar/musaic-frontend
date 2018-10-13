@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
@@ -60,6 +61,22 @@ class DownloadPage extends Component {
     else
         alert('No image to download')
   };
+=======
+import React, { Component } from 'react'
+import Image from '../components/Image';
+
+import obama from '../media/obama.png';
+
+class DownloadPage extends Component {
+  render() {
+    return (
+      <div>
+        <Image src={obama} alt='obama' />
+        <h1>TODO: DOWNLOAD PAGE</h1>
+      </div>
+    )
+  }
+>>>>>>> Started the download page
 }
 
 export default DownloadPage;
