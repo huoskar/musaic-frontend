@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Button from '@material-ui/core/Button';
+import Image from '../components/Image';
 
 const PageTitle = styled.h1`
   font-family: 'Roboto', sans-serif;
@@ -13,10 +14,21 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-const Image = styled.img`
+const ImagePlaceholder = styled.div`
   width: 512px;
-  display: block;
-  margin: 0 auto 2rem;
+  height: 512px;
+  border: 1px solid #3F51B5;
+  margin: auto;
+`;
+
+const FileUpload = styled.input`
+`;
+
+const FlexBox = styled.div`
+  width: 512px;
+  display: flex;
+  margin: 2rem auto;
+  justify-content: space-between;
 `;
 
 class UploadPage extends Component {
@@ -30,15 +42,17 @@ class UploadPage extends Component {
     return (
       <Wrapper>
         <PageTitle>Upload your image</PageTitle>
-        {this.state.picture === '' ? (<h1>Upload an image</h1>) : <Image src={this.state.picture} alt='uploaded'/>}
-        <input
+        {this.state.picture === '' ? <ImagePlaceholder><h3>Choose an image to upload</h3></ImagePlaceholder> : <Image src={this.state.picture} alt='uploaded'/>}
+        <FlexBox>
+          <FileUpload
                 id="image-upload"
                 type="file"
                 name="pic"
                 accept="image/*"
                 onChange={e => this.onChangeFiles(e.target.files)}
               />
-        <Button variant='contained' color='primary'>Generate</Button>
+          <Button variant='contained' color='primary'>Generate</Button>
+        </FlexBox>
       </Wrapper>
     )
   }
