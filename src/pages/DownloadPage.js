@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import fileDownload from 'js-file-download';
 
 import Button from '@material-ui/core/Button';
 
@@ -12,12 +12,6 @@ const PageTitle = styled.h1`
 
 const Wrapper = styled.div`
   text-align: center;
-`;
-
-const Image = styled.img`
-  width: 512px;
-  display: block;
-  margin: 0 auto 2rem;
 `;
 
 class DownloadPage extends Component {
@@ -55,28 +49,11 @@ class DownloadPage extends Component {
 
   downloadImage  = () => {
     console.log('In download image function')
-    var fileDownload = require('js-file-download');
-    if(this.state.picture)
-        fileDownload(this.state.picture, 'awesomePic.jpg');
+    if(this.state.convertedPicture)
+        fileDownload(this.state.convertedPicture, 'awesomePic.jpg');
     else
         alert('No image to download')
   };
-=======
-import React, { Component } from 'react'
-import Image from '../components/Image';
-
-import obama from '../media/obama.png';
-
-class DownloadPage extends Component {
-  render() {
-    return (
-      <div>
-        <Image src={obama} alt='obama' />
-        <h1>TODO: DOWNLOAD PAGE</h1>
-      </div>
-    )
-  }
->>>>>>> Started the download page
 }
 
 export default DownloadPage;
