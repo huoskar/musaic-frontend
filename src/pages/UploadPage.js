@@ -127,7 +127,7 @@ class UploadPage extends Component {
     e.preventDefault();
     // console.log('In download image function')
     // if(this.state.convertedPicture)
-    //     // fileDownload(this.state.convertedPicture, 'awesomePic.png');
+    //     fileDownload(this.state.convertedPicture, 'awesomePic.png');
     //     console.log(typeof this.state.convertedPicture);
     // else
     //     alert('No image to download')

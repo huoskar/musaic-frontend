@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import styled from 'styled-components';
 import LandingPage from './pages/LandingPage';
+import setAuthToken from './utils/setAuthToken';
 
 import logo from './media/Musaic.png';
 import DownloadPage from './pages/DownloadPage';
