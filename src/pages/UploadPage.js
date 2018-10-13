@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import Button from '@material-ui/core/Button';
 import Image from '../components/Image';
@@ -51,11 +52,30 @@ class UploadPage extends Component {
                 accept="image/*"
                 onChange={e => this.onChangeFiles(e.target.files)}
               />
-          <Button variant='contained' color='primary'>Generate</Button>
+          <Button disabled={!this.state.pictureRaw} onClick={this.onGenerate} variant='contained' color='primary'>Generate</Button>
         </FlexBox>
       </Wrapper>
     )
   }
+
+  onGenerate = e => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('image', this.state.pictureRaw);
+    formData.append('token', localStorage.spotifyToken);
+
+    const config = {
+      headers: {
+          'content-type': 'multipart/form-data'
+      }
+    };
+
+    axios
+    .post('/api/users/mosaic', formData, config )
+    .then(res => console.log(res.data.success))
+    .catch(err => console.log(err));
+  };
 
     /**
    * Handle files choosen in the file upload form. We only want one file.

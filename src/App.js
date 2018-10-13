@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
 import styled from 'styled-components';
+import setAuthToken from './utils/setAuthToken';
 
 import logo from './media/Musaic.png';
 import DownloadPage from './pages/DownloadPage';
@@ -19,6 +20,43 @@ const Logo = styled.img`
   width: 250px;
   margin: 2rem auto 4rem;
 `;
+
+if (!localStorage.spotifyToken || localStorage.spotifyToken === undefined) {
+  // Get the hash of the url
+  const hash = window.location.hash
+  .substring(1)
+  .split('&')
+  .reduce((initial, item) => {
+    if (item) {
+      var parts = item.split('=');
+      initial[parts[0]] = decodeURIComponent(parts[1]);
+    }
+    return initial;
+  }, {});
+
+  window.location.hash = '';
+
+  // Set token
+  let _token = hash.access_token;
+  console.log(_token);
+  if (_token) {
+    localStorage.setItem('spotifyToken', _token);
+    setAuthToken(_token);
+  }
+  const authEndpoint = 'https://accounts.spotify.com/authorize';
+
+  // Replace with your app's client ID, redirect URI and desired scopes
+  const clientId = 'b25b36ce588b48018453c8bac31b2337';
+  const redirectUri = 'http://localhost:3000/callback/';
+  const scopes = [
+    'user-top-read'
+  ];
+
+  // If there is no token, redirect to Spotify authorization
+  if (!_token) {
+    window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
+  }
+}
 
 class App extends Component {
   render() {
