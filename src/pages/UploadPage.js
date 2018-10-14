@@ -47,7 +47,7 @@ class UploadPage extends Component {
     picture: '',
     convertedPicture: null,
     imageConverted: false,
-    genre: 'pop',
+    genre: 'all',
     loading: false,
   };
 

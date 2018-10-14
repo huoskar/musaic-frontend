@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const RadioField = styled.div`
-    width: 1000px;
+    width: 512px;
     padding: 1rem 0;
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 `;
 
 const RadioButton = styled.label`
@@ -17,7 +20,7 @@ const RadioButton = styled.label`
 const Legend = styled.legend`
     font-family: 'Roboto', sans-serif;
     font-size: 1.2em;
-    margin-bottom: 25px;
+    margin-top: 25px;
     color: #404041;
 `;
 
@@ -33,8 +36,18 @@ class RadioButtons extends Component {
 
     return (
       <div>
+        <Legend >{'Choose genre:'}</Legend>
         <RadioField>
-          <Legend >{'Choose genre:'}</Legend>
+          <RadioButton>
+            <Radio
+              value="all"
+              type="radio"
+              name="genre"
+              onChange={onChangeInterval}
+              checked={current === 'all'}
+            />
+            All
+          </RadioButton>
           <RadioButton>
             <Radio
               value="pop"
