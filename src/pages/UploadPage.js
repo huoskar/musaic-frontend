@@ -57,7 +57,7 @@ class UploadPage extends Component {
 
     if (this.state.imageConverted) {
       buttons = (<BoxDownload>
-        <Button onClick={this.downloadImage} variant='contained' color='primary'>Download</Button>
+       <a href={`data:image/jpg;base64, ${this.state.convertedPicture}`} download="awesomePic.jpg"><Button  variant='contained' color='primary'>Download</Button></a>
       </BoxDownload>);
 
       title = <PageTitle>Download your image</PageTitle>;
@@ -122,22 +122,7 @@ class UploadPage extends Component {
       reader.readAsDataURL(files[0]);
     }
   };
-
-  downloadImage  = e => {
-    e.preventDefault();
-    // console.log('In download image function')
-    // if(this.state.convertedPicture)
-    //     fileDownload(this.state.convertedPicture, 'awesomePic.png');
-    //     console.log(typeof this.state.convertedPicture);
-    // else
-    //     alert('No image to download')
-
-    axios.get('/api/users/cat')
-      .then(res => {
-        this.setState({ convertedPicture: res.data.base64 })
-      
-      });
-  };
 }
+
 
 export default UploadPage;
