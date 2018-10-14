@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const RadioField = styled.div`
-    width: 512px;
+    width: 600px;
     padding: 1rem 0;
     margin: auto;
 `;
@@ -21,6 +21,10 @@ const Legend = styled.legend`
     color: #404041;
 `;
 
+const Radio = styled.input`
+    margin-right: 10px;
+`;
+
 class RadioButtons extends Component {
 
   render() {
@@ -32,7 +36,7 @@ class RadioButtons extends Component {
         <RadioField>
           <Legend >{'Choose genre:'}</Legend>
           <RadioButton>
-            <input
+            <Radio
               value="pop"
               type="radio"
               name="genre"
@@ -42,7 +46,7 @@ class RadioButtons extends Component {
             Pop
           </RadioButton>
           <RadioButton>
-            <input
+            <Radio
               value="rock"
               type="radio"
               name="genre"
@@ -52,7 +56,7 @@ class RadioButtons extends Component {
             Rock
           </RadioButton>
           <RadioButton>
-            <input
+            <Radio
               value="jazz"
               type="radio"
               name="genre"
@@ -62,7 +66,7 @@ class RadioButtons extends Component {
             Jazz
           </RadioButton>
           <RadioButton>
-            <input
+            <Radio
               value="rnb"
               type="radio"
               name="genre"
@@ -72,7 +76,7 @@ class RadioButtons extends Component {
             R&B
           </RadioButton>
           <RadioButton>
-            <input
+            <Radio
               value="hiphop"
               type="radio"
               name="genre"
