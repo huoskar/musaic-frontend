@@ -133,6 +133,8 @@ class UploadPage extends Component {
   onGenerate = e => {
     e.preventDefault();
 
+    this.setState({ loading: true });
+
     let data = new FormData();
     data.append('file', this.state.pictureRaw);
     data.append('token', localStorage.spotifyToken);
