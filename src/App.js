@@ -66,6 +66,7 @@ class App extends Component {
         <Wrapper>
           <Logo src={logo} alt='logo' />
           <Route exact path='/' component={LandingPage} />
+          <Route exact path='/callback/' component={LandingPage} />
           <Route exact path='/upload' component={UploadPage} />
           <Route exact path='/download' component={DownloadPage} />
         </Wrapper>

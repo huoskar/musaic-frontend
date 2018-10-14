@@ -6,6 +6,7 @@ import fileDownload from 'js-file-download';
 import Button from '@material-ui/core/Button';
 import Image from '../components/Image';
 import obama from '../media/obama.png';
+import RadioButtons from '../components/RadioButtons';
 
 const PageTitle = styled.h1`
   font-family: 'Roboto', sans-serif;
@@ -51,10 +52,12 @@ class UploadPage extends Component {
 
   render() {
 
-    let buttons;
-    let image;
     let title;
+    let image;
+    let radioButtons;
+    let buttons;
 
+    // Set the title and buttons depending on if a image has been uploaded
     if (this.state.imageConverted) {
       buttons = (<BoxDownload>
        <a href={`data:image/jpg;base64, ${this.state.convertedPicture}`} download="awesomePic.jpg"><Button  variant='contained' color='primary'>Download</Button></a>
@@ -76,6 +79,7 @@ class UploadPage extends Component {
       title = <PageTitle>Upload your image</PageTitle>;
     }
 
+    // Decide the state of the image field depending on if a file has been uploaded or generated
     if (this.state.convertedPicture) {
       image = <Image src={`data:image/jpg;base64, ${this.state.convertedPicture}`} alt='converted'/>    
     } else if (this.state.picture !== '') {
@@ -89,6 +93,7 @@ class UploadPage extends Component {
         {title}
         {image}
         {buttons}
+        <RadioButtons />
       </Wrapper>
     )
   }
