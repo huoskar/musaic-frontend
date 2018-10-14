@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import fileDownload from 'js-file-download';
+import ReactDropzone from 'react-dropzone';
 
 import Button from '@material-ui/core/Button';
 import Image from '../components/Image';
 import obama from '../media/obama.png';
+import icon from '../media/picture.png';
 
 const PageTitle = styled.h1`
   font-family: 'Roboto', sans-serif;
@@ -18,10 +20,12 @@ const Wrapper = styled.div`
 `;
 
 const ImagePlaceholder = styled.div`
-  width: 512px;
-  height: 512px;
-  border: 1px solid #3F51B5;
+  width: 201px;
+  height: 201px;
+  opacity: 0.4;
+  text-align: center;
   margin: auto;
+  background-color: white;
 `;
 
 const FileUpload = styled.input`
@@ -33,12 +37,19 @@ const FlexBox = styled.div`
   margin: 2rem auto;
   justify-content: space-between;
 `;
+ 
 
 const BoxDownload = styled.div`
   text-align: center;
   width: 512px;
   margin: 2rem auto;
 `;
+
+const ImageBox = styled.div`
+  margin-top: 60px;
+`;
+
+
 
 class UploadPage extends Component {
 
@@ -81,7 +92,7 @@ class UploadPage extends Component {
     } else if (this.state.picture !== '') {
       image = <Image src={this.state.picture} alt='uploaded'/>
     } else {
-      image = (<ImagePlaceholder><h3>Choose an image to upload</h3></ImagePlaceholder>);
+      image = (<ImagePlaceholder><ReactDropzone onChange={e => this.onChangeFiles(e.target.files)}><ImageBox><img src={icon}></img></ImageBox></ReactDropzone></ImagePlaceholder>);
     }
 
     return (
@@ -92,6 +103,8 @@ class UploadPage extends Component {
       </Wrapper>
     )
   }
+
+
 
   onGenerate = e => {
     e.preventDefault();
@@ -122,6 +135,7 @@ class UploadPage extends Component {
       reader.readAsDataURL(files[0]);
     }
   };
+  
 }
 
 
