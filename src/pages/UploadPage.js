@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import fileDownload from 'js-file-download';
 import ReactDropzone from 'react-dropzone';
 
 import Button from '@material-ui/core/Button';
 import Image from '../components/Image';
 import obama from '../media/obama.png';
 import icon from '../media/picture.png';
+
+import Button from '@material-ui/core/Button';
+import Image from '../components/Image';
+import Loader from 'react-loader-spinner';
+import RadioButtons from '../components/RadioButtons';
 
 const PageTitle = styled.h1`
   font-family: 'Roboto', sans-serif;
@@ -58,20 +62,26 @@ class UploadPage extends Component {
     picture: '',
     convertedPicture: null,
     imageConverted: false,
+    genre: 'all',
+    loading: false,
   };
 
   render() {
 
-    let buttons;
-    let image;
     let title;
+    let image;
+    let radioButtons = <RadioButtons onChangeInterval={this.onChangeInterval} current={this.state.genre} />;
+    let buttons;
 
+    // Set the title and buttons depending on if a image has been uploaded
     if (this.state.imageConverted) {
       buttons = (<BoxDownload>
        <a href={`data:image/jpg;base64, ${this.state.convertedPicture}`} download="awesomePic.jpg"><Button  variant='contained' color='primary'>Download</Button></a>
       </BoxDownload>);
 
       title = <PageTitle>Download your image</PageTitle>;
+
+      radioButtons = null;
     } else {
       buttons = (<FlexBox>
         <FileUpload
@@ -87,18 +97,36 @@ class UploadPage extends Component {
       title = <PageTitle>Upload your image</PageTitle>;
     }
 
+    // Decide the state of the image field depending on if a file has been uploaded or generated
     if (this.state.convertedPicture) {
       image = <Image src={`data:image/jpg;base64, ${this.state.convertedPicture}`} alt='converted'/>    
-    } else if (this.state.picture !== '') {
+    } 
+    
+    else if (this.state.loading) {
+      title = <PageTitle>Generating...</PageTitle>
+      image = <Loader 
+      type="Audio"
+      color="#1DB954"
+      height="100"	
+      width="100"
+      />; 
+      radioButtons = null;
+      buttons = null;
+    }
+      
+    else if (this.state.picture !== '') {
       image = <Image src={this.state.picture} alt='uploaded'/>
+
     } else {
       image = (<ImagePlaceholder><ReactDropzone onChange={e => this.onChangeFiles(e.target.files)}><ImageBox><img src={icon}></img></ImageBox></ReactDropzone></ImagePlaceholder>);
-    }
+    } 
+
 
     return (
       <Wrapper>
         {title}
         {image}
+        {radioButtons}
         {buttons}
       </Wrapper>
     )
@@ -112,9 +140,11 @@ class UploadPage extends Component {
     let data = new FormData();
     data.append('file', this.state.pictureRaw);
     data.append('token', localStorage.spotifyToken);
+    data.append('genre', this.state.genre);
 
     axios.post('http://localhost:5000/upload', data)
-      .then(res => this.setState({convertedPicture: res.data, imageConverted: true}))
+      .then(res => this.setState({convertedPicture: res.data, imageConverted: true, loading: false}))
+      .catch(err => console.log(err));
   };
 
     /**
@@ -135,7 +165,15 @@ class UploadPage extends Component {
       reader.readAsDataURL(files[0]);
     }
   };
-  
+
+  onChangeInterval = e => {
+    e.persist();
+    const genre = e.target.checked ? e.target.value : this.state.interval;
+
+    this.setState({
+      genre
+    });
+  };
 }
 
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import DisplayExp from '../components/DisplayExp';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
-import Loader from 'react-loader-spinner'
 import { Link } from 'react-router-dom';
 
 const PageTitle = styled.h1`
@@ -32,17 +31,8 @@ const Wrapper = styled.div`
         <PageTitle>Welcome to Spotify Musaic App</PageTitle> 
         <PageContents>Create awesome profile with your playlist and Share with your friends</PageContents>
         <DisplayExp/>
-        <Button variant='contained' color='primary' fill='rebeccapurple' ><Link to='/upload'>Let's Get Started !</Link></Button>
-        
-      <Loader 
-         type="Audio"
-         color="#1DB954"
-         height="100"	
-         width="100"
-      />    
+        <Button variant='contained' color='primary' fill='rebeccapurple' ><Link to='/upload'>Let's Get Started !</Link></Button>   
       </Wrapper>
-    
-      
     )
   }
 }
