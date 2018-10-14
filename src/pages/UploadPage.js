@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import fileDownload from 'js-file-download';
 
 import Button from '@material-ui/core/Button';
 import Image from '../components/Image';
 import Loader from 'react-loader-spinner';
-import obama from '../media/obama.png';
 import RadioButtons from '../components/RadioButtons';
 
 const PageTitle = styled.h1`
@@ -50,14 +48,14 @@ class UploadPage extends Component {
     convertedPicture: null,
     imageConverted: false,
     genre: 'pop',
-    loading: true,
+    loading: false,
   };
 
   render() {
 
     let title;
     let image;
-    let radioButtons;
+    let radioButtons = <RadioButtons onChangeInterval={this.onChangeInterval} current={this.state.genre} />;
     let buttons;
 
     // Set the title and buttons depending on if a image has been uploaded
@@ -67,6 +65,8 @@ class UploadPage extends Component {
       </BoxDownload>);
 
       title = <PageTitle>Download your image</PageTitle>;
+
+      radioButtons = null;
     } else {
       buttons = (<FlexBox>
         <FileUpload
@@ -95,6 +95,8 @@ class UploadPage extends Component {
       height="100"	
       width="100"
       />; 
+      radioButtons = null;
+      buttons = null;
     }
       
     else if (this.state.picture !== '') {
@@ -109,7 +111,7 @@ class UploadPage extends Component {
       <Wrapper>
         {title}
         {image}
-        <RadioButtons onChangeInterval={this.onChangeInterval} current={this.state.genre} />
+        {radioButtons}
         {buttons}
       </Wrapper>
     )
@@ -125,6 +127,7 @@ class UploadPage extends Component {
 
     axios.post('http://localhost:5000/upload', data)
       .then(res => this.setState({convertedPicture: res.data, imageConverted: true, loading: false}))
+      .catch(err => console.log(err));
   };
 
     /**

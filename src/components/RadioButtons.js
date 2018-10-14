@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const RadioField = styled.div`
-    width: 600px;
+    width: 1000px;
     padding: 1rem 0;
     margin: auto;
 `;
@@ -84,6 +84,26 @@ class RadioButtons extends Component {
               checked={current === 'hiphop'}
             />
             Hip-hop
+          </RadioButton>
+          <RadioButton>
+            <Radio
+              value="reggae"
+              type="radio"
+              name="genre"
+              onChange={onChangeInterval}
+              checked={current === 'reggae'}
+            />
+            Reggae
+          </RadioButton>
+          <RadioButton>
+            <Radio
+              value="country"
+              type="radio"
+              name="genre"
+              onChange={onChangeInterval}
+              checked={current === 'country'}
+            />
+            Country
           </RadioButton>
         </RadioField>
       </div>
