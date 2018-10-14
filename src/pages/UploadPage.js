@@ -5,11 +5,7 @@ import ReactDropzone from 'react-dropzone';
 
 import Button from '@material-ui/core/Button';
 import Image from '../components/Image';
-import obama from '../media/obama.png';
 import icon from '../media/picture.png';
-
-import Button from '@material-ui/core/Button';
-import Image from '../components/Image';
 import Loader from 'react-loader-spinner';
 import RadioButtons from '../components/RadioButtons';
 
