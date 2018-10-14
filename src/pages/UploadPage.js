@@ -46,7 +46,7 @@ class UploadPage extends Component {
     pictureRaw: null,
     picture: '',
     convertedPicture: null,
-    imageConverted: false,
+    imageConverted: true,
   };
 
   render() {
@@ -96,8 +96,12 @@ class UploadPage extends Component {
   onGenerate = e => {
     e.preventDefault();
 
-    console.log(typeof this.state.convertedPicture);
+    let data = new FormData();
+    data.append('file', this.state.pictureRaw);
+    data.append('token', localStorage.spotifyToken);
 
+    axios.post('/upload', data)
+      .then(res => console.log(res))
   };
 
     /**
@@ -123,14 +127,14 @@ class UploadPage extends Component {
     e.preventDefault();
     // console.log('In download image function')
     // if(this.state.convertedPicture)
-    //     // fileDownload(this.state.convertedPicture, 'awesomePic.png');
+    //     fileDownload(this.state.convertedPicture, 'awesomePic.png');
     //     console.log(typeof this.state.convertedPicture);
     // else
     //     alert('No image to download')
 
     axios.get('/api/users/cat')
       .then(res => {
-        this.setState({ convertedPicture: res.data })
+        this.setState({ convertedPicture: res.data.base64 })
       
       });
   };
