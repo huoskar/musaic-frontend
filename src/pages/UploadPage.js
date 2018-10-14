@@ -5,6 +5,7 @@ import fileDownload from 'js-file-download';
 
 import Button from '@material-ui/core/Button';
 import Image from '../components/Image';
+import Loader from 'react-loader-spinner';
 import obama from '../media/obama.png';
 import RadioButtons from '../components/RadioButtons';
 
@@ -49,6 +50,7 @@ class UploadPage extends Component {
     convertedPicture: null,
     imageConverted: false,
     genre: 'pop',
+    loading: true,
   };
 
   render() {
@@ -83,15 +85,29 @@ class UploadPage extends Component {
     // Decide the state of the image field depending on if a file has been uploaded or generated
     if (this.state.convertedPicture) {
       image = <Image src={`data:image/jpg;base64, ${this.state.convertedPicture}`} alt='converted'/>    
-    } else if (this.state.picture !== '') {
+    } 
+    
+    else if (this.state.loading) {
+      title = <PageTitle>Generating...</PageTitle>
+      image = <Loader 
+      type="Audio"
+      color="#1DB954"
+      height="100"	
+      width="100"
+      />; 
+    }
+      
+    else if (this.state.picture !== '') {
       image = <Image src={this.state.picture} alt='uploaded'/>
-    } else {
+    } 
+    
+    else {
       image = (<ImagePlaceholder><h3>Choose an image to upload</h3></ImagePlaceholder>);
     }
 
     return (
       <Wrapper>
-        {/* {title} */}
+        {title}
         {image}
         <RadioButtons onChangeInterval={this.onChangeInterval} current={this.state.genre} />
         {buttons}
@@ -108,7 +124,7 @@ class UploadPage extends Component {
     data.append('genre', this.state.genre);
 
     axios.post('http://localhost:5000/upload', data)
-      .then(res => this.setState({convertedPicture: res.data, imageConverted: true}))
+      .then(res => this.setState({convertedPicture: res.data, imageConverted: true, loading: false}))
   };
 
     /**
