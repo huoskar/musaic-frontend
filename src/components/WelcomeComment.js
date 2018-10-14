@@ -21,8 +21,6 @@ class WelcomeComment extends Component {
         }}>
           Let's create awesome profile photo with your favorite songs on Spotify! 
         </h2>
-      
-
       </div>
     )
   }

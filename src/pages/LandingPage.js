@@ -15,7 +15,6 @@ const PageContents = styled.h2`
   font-weight: 300;
   color: #808080;
   //font-weight: bold;
-
 `;
 
 const Wrapper = styled.div`
