@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import jazz from '../media/jazz.png';
+import rock from '../media/rock.png';
+import all from '../media/all.png';
+import country from '../media/country.png';
+import edm from '../media/edm.png';
+import hiphop from '../media/hiphop.png';
+import metal from '../media/metal.png';
+import reggae from '../media/reggae.png';
+
 const RadioField = styled.div`
     width: 512px;
     padding: 1rem 0;
@@ -28,6 +37,10 @@ const Radio = styled.input`
     margin-right: 10px;
 `;
 
+const Icon = styled.img`
+    width: 30px;
+`;
+
 class RadioButtons extends Component {
 
   render() {
@@ -46,17 +59,17 @@ class RadioButtons extends Component {
               onChange={onChangeInterval}
               checked={current === 'all'}
             />
-            All
+            <Icon src={all} alt='all' />
           </RadioButton>
           <RadioButton>
             <Radio
-              value="pop"
+              value="metal"
               type="radio"
               name="genre"
               onChange={onChangeInterval}
-              checked={current === 'pop'}
+              checked={current === 'metal'}
             />
-            Pop
+            <Icon src={metal} alt='metal' />
           </RadioButton>
           <RadioButton>
             <Radio
@@ -66,7 +79,7 @@ class RadioButtons extends Component {
               onChange={onChangeInterval}
               checked={current === 'rock'}
             />
-            Rock
+            <Icon src={rock} alt='rock' />
           </RadioButton>
           <RadioButton>
             <Radio
@@ -76,17 +89,17 @@ class RadioButtons extends Component {
               onChange={onChangeInterval}
               checked={current === 'jazz'}
             />
-            Jazz
+            <Icon src={jazz} alt='jazz' />
           </RadioButton>
           <RadioButton>
             <Radio
-              value="rnb"
+              value="edm_dance"
               type="radio"
               name="genre"
               onChange={onChangeInterval}
-              checked={current === 'rnb'}
+              checked={current === 'edm_dance'}
             />
-            R&B
+            <Icon src={edm} alt='edm' />
           </RadioButton>
           <RadioButton>
             <Radio
@@ -96,7 +109,7 @@ class RadioButtons extends Component {
               onChange={onChangeInterval}
               checked={current === 'hiphop'}
             />
-            Hip-hop
+            <Icon src={hiphop} alt='hiphop' />
           </RadioButton>
           <RadioButton>
             <Radio
@@ -106,7 +119,7 @@ class RadioButtons extends Component {
               onChange={onChangeInterval}
               checked={current === 'reggae'}
             />
-            Reggae
+            <Icon src={reggae} alt='reggae' />
           </RadioButton>
           <RadioButton>
             <Radio
@@ -116,7 +129,7 @@ class RadioButtons extends Component {
               onChange={onChangeInterval}
               checked={current === 'country'}
             />
-            Country
+            <Icon src={country} alt='country' />
           </RadioButton>
         </RadioField>
       </div>
