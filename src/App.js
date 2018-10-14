@@ -57,6 +57,7 @@ if (!localStorage.spotifyToken || localStorage.spotifyToken === undefined) {
   if (!_token) {
     window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
   }
+
 }
 
 class App extends Component {
