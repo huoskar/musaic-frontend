@@ -48,6 +48,7 @@ class UploadPage extends Component {
     picture: '',
     convertedPicture: null,
     imageConverted: false,
+    genre: 'pop',
   };
 
   render() {
@@ -90,10 +91,10 @@ class UploadPage extends Component {
 
     return (
       <Wrapper>
-        {title}
+        {/* {title} */}
         {image}
+        <RadioButtons onChangeInterval={this.onChangeInterval} current={this.state.genre} />
         {buttons}
-        <RadioButtons />
       </Wrapper>
     )
   }
@@ -104,6 +105,7 @@ class UploadPage extends Component {
     let data = new FormData();
     data.append('file', this.state.pictureRaw);
     data.append('token', localStorage.spotifyToken);
+    data.append('genre', this.state.genre);
 
     axios.post('http://localhost:5000/upload', data)
       .then(res => this.setState({convertedPicture: res.data, imageConverted: true}))
@@ -126,6 +128,15 @@ class UploadPage extends Component {
 
       reader.readAsDataURL(files[0]);
     }
+  };
+
+  onChangeInterval = e => {
+    e.persist();
+    const genre = e.target.checked ? e.target.value : this.state.interval;
+
+    this.setState({
+      genre
+    });
   };
 }
 

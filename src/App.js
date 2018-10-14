@@ -10,7 +10,7 @@ import DownloadPage from './pages/DownloadPage';
 import UploadPage from './pages/UploadPage';
 
 const Wrapper = styled.div`
-  background: linear-gradient(45deg, #ffecd2, #fcb69f);
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
   width: 100%;
   overflow: scroll;
   min-height: 100vh;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 const Logo = styled.img`
   display: block;
   width: 250px;
-  margin: 2rem auto 4rem;
+  margin: 2rem auto 2.5rem;
 `;
 
 if (!localStorage.spotifyToken || localStorage.spotifyToken === undefined) {
