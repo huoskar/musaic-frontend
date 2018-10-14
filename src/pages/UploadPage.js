@@ -46,7 +46,7 @@ class UploadPage extends Component {
     pictureRaw: null,
     picture: '',
     convertedPicture: null,
-    imageConverted: true,
+    imageConverted: false,
   };
 
   render() {
@@ -77,7 +77,7 @@ class UploadPage extends Component {
     }
 
     if (this.state.convertedPicture) {
-      image = <Image src={this.state.convertedPicture} alt='converted'/>    
+      image = <Image src={`data:image/jpg;base64, ${this.state.convertedPicture}`} alt='converted'/>    
     } else if (this.state.picture !== '') {
       image = <Image src={this.state.picture} alt='uploaded'/>
     } else {
@@ -100,8 +100,8 @@ class UploadPage extends Component {
     data.append('file', this.state.pictureRaw);
     data.append('token', localStorage.spotifyToken);
 
-    axios.post('/upload', data)
-      .then(res => console.log(res))
+    axios.post('http://localhost:5000/upload', data)
+      .then(res => this.setState({convertedPicture: res.data, imageConverted: true}))
   };
 
     /**
