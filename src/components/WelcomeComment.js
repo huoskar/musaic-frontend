@@ -19,7 +19,7 @@ class WelcomeComment extends Component {
            //'marginLeft': '100px',
            //'marginTop' : '40px'
         }}>
-          Let's create awesome profile photo with your favorite songs on Spotify! 
+          Let's create awesome profile photo with popular music by genre on Spotify! 
         </h2>
       
 
