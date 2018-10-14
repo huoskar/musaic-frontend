@@ -29,13 +29,16 @@ const ImagePlaceholder = styled.div`
 `;
 
 const FileUpload = styled.input`
-`;
+color: #3F51B5;
+font-size: 1em;
+margin: 1em;
+padding: 0.3em 1em;
+border: 2px solid #3F51B5;
+border-radius: 3px;`;
 
 const FlexBox = styled.div`
   width: 512px;
-  display: flex;
   margin: 2rem auto;
-  justify-content: space-between;
 `;
  
 

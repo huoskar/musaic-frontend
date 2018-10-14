@@ -29,7 +29,7 @@ const Wrapper = styled.div`
     return (
       <Wrapper>
         <PageTitle>Welcome to Spotify Musaic App</PageTitle> 
-        <PageContents>Create awesome profile with your playlist and Share with your friends</PageContents>
+        <PageContents>Create awesome profile photo with beloved songs by genre on Spotify</PageContents>
         <DisplayExp/>
         <Button variant='contained' color='primary' fill='rebeccapurple' ><Link to='/upload'>Let's Get Started !</Link></Button>   
       </Wrapper>
