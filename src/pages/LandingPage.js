@@ -3,6 +3,7 @@ import DisplayExp from '../components/DisplayExp';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Loader from 'react-loader-spinner'
+import { Link } from 'react-router-dom';
 
 const PageTitle = styled.h1`
   font-family: 'Roboto', sans-serif;
@@ -27,12 +28,11 @@ const Wrapper = styled.div`
  class LandingPage extends Component {
   render() {
     return (
-
       <Wrapper>
         <PageTitle>Welcome to Spotify Musaic App</PageTitle> 
         <PageContents>Create awesome profile with your playlist and Share with your friends</PageContents>
         <DisplayExp/>
-        <Button variant='contained' color='primary' fill='rebeccapurple' >Let's Get Started !</Button>
+        <Button variant='contained' color='primary' fill='rebeccapurple' ><Link to='/upload'>Let's Get Started !</Link></Button>
         
       <Loader 
          type="Audio"
